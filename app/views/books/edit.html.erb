@@ -1,0 +1,42 @@
+<%= flash[:alert] %>
+<% if @book.errors.any? %>
+  <div class="alert alert-warning">
+  	<ul>
+  		<% @book.errors.full_messages.each do |message| %>
+  		 <li><%= message %></li>
+  		<% end %>
+  	</ul>
+  </div>
+<% end %>
+
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Editing Book</h1>
+
+				<%= form_for(@book) do |f| %>
+				    <div class="field row">
+						<%= f.label :title, "Title" %>
+						<%= f.text_field :title , class: "form-control" %>
+                    </div>
+
+                    <div class="field row">
+						<%= f.label :body, "Opinion" %>
+						<%= f.text_area :body , class: "form-control" %>
+					</div>
+
+					<div class="actions row">
+						<%= f.submit 'Update Book' , class: "btn btn-primary btn-block" %>
+					</div>
+
+				<% end %>
+
+					<%= link_to "Show", book_path %>
+					|
+					<%= link_to "Back", books_path %>
+
+			</div>
+		</div>
+	</div>
+</div>
